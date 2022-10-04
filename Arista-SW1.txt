@@ -1,7 +1,3 @@
-#######################
-show full-configuration
-#######################
-% Invalid input
 ############
 show running
 ############
@@ -61,6 +57,9 @@ interface Ethernet12
 !
 interface Loopback0
    ip address 10.255.255.1/32
+!
+interface Loopback1
+   ip address 1.1.1.1/32
 !
 interface Management1
 !
