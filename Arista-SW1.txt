@@ -79,3 +79,87 @@ router ospf 444
    max-lsa 12000
 !
 end
+############
+show running
+############
+! Command: show running-config
+! device: ARISTA-SW1 (vEOS-lab, EOS-4.26.8M)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+username cisco privilege 15 secret sha512 $6$s18L8V83jZPKiHPk$Pt6SwWTJ9kSMuv.451U0APHjQcNbntojikDP2RPkBn1a26JyhXl6DvHWxB54KevkDlt3dpIXVpS6uGwBdNSR61
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model ribd
+!
+logging buffered 65000
+!
+hostname ARISTA-SW1
+ip name-server vrf default 8.8.8.8
+!
+spanning-tree mode mstp
+!
+vlan 10,25
+!
+interface Ethernet1
+   switchport access vlan 25
+   spanning-tree portfast
+!
+interface Ethernet2
+   switchport access vlan 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet3
+   switchport access vlan 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet4
+!
+interface Ethernet5
+!
+interface Ethernet6
+!
+interface Ethernet7
+!
+interface Ethernet8
+!
+interface Ethernet9
+!
+interface Ethernet10
+!
+interface Ethernet11
+!
+interface Ethernet12
+!
+interface Loopback0
+   ip address 10.255.255.1/32
+!
+interface Loopback1
+   ip address 1.1.1.1/32
+!
+interface Loopback2
+   ip address 1.1.1.2/32
+!
+interface Management1
+!
+interface Vlan10
+   ip address 192.168.10.1/24
+!
+interface Vlan25
+   ip address 192.168.1.1/24
+!
+ip routing
+!
+router ospf 444
+   router-id 10.255.255.1
+   network 10.255.255.1/32 area 0.0.0.0
+   network 192.168.1.1/32 area 0.0.0.0
+   network 192.168.10.0/24 area 0.0.0.0
+   max-lsa 12000
+!
+end
